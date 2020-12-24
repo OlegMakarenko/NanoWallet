@@ -3,6 +3,7 @@
 ## Version 2.5.0
 
     - Fix voting service
+    - Updated company details in terms and condition
 
 ## Version 2.4.7-OptIn
 
