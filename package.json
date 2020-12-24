@@ -1,6 +1,6 @@
 {
   "name": "NEM-Wallet",
-  "version": "2.4.7",
+  "version": "2.5.0",
   "description": "Cross-platform lite wallet for NEM",
   "author": "https://github.com/QuantumMechanics",
   "license": "MIT",
@@ -40,7 +40,7 @@
     "nem-library": "1.0.5",
     "nem-sdk": "1.6.7",
     "nem-trezor": "1.1.0",
-    "nem-voting": "^2.2.6",
+    "nem-voting": "^2.2.9",
     "symbol-hd-wallets": "0.12.0",
     "ng-toast": "2.0.0",
     "ngstorage": "0.3.10",

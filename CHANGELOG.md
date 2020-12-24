@@ -1,5 +1,13 @@
 # Changelog
 
+## Version 2.5.0
+
+    - Fix voting service
+
+## Version 2.4.7-OptIn
+
+    - Added Symbol opt in modeule
+
 ## Version 2.4.7
 
     - Fix testnet nodes
