@@ -258,7 +258,7 @@ class NormalOptInCtrl {
      * Get Ledger account from hardware device
      */
     async getLedgerSymbolAccount() {
-        alert("Please open Symbol BOLOS app");
+        this._Alert.ledgerNotOpenApp(true)
         const defaultPublicKey = await this._Ledger.getSymbolAccount(this.defaultAccountPath, this.catapultNetwork, true);
         const defaultAccount = PublicAccount.createFromPublicKey(defaultPublicKey, this.catapultNetwork);
         this._$timeout(() => {

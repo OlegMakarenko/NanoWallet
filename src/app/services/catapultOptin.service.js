@@ -159,8 +159,7 @@ class CatapultOptin {
         return new Promise( (resolve, reject) => {
             const config = this.getOptinConfig();
             if (optinSymbolLedger && (namespaces.length > 0 || vrfAccount)) {
-                alert("Please open Symbol BOLOS app");
-                alert("Please check your Ledger device!");
+                this._Alert.ledgerNotOpenApp(true)
                 this._$timeout(() => {
                     this._Alert.ledgerFollowInstruction();
                 });
@@ -169,7 +168,7 @@ class CatapultOptin {
                 if (this._Wallet.algo == "trezor") {
                     this._sendTrezorDTOs(common, dtos).then(resolve).catch(reject);
                 } else if (this._Wallet.algo == "ledger") {
-                    alert("Please open NEM BOLOS app");
+                    this._Alert.ledgerNotOpenApp(false)
                     this._sendLedgerDTOs(common, dtos).then(resolve).catch(reject);
                 } else {
                     const sendPromises = dtos.map(dto => broadcastDTO(common.privateKey, dto, config));
@@ -324,8 +323,7 @@ class CatapultOptin {
         return new Promise((resolve, reject) => {
             nem.com.requests.account.data(this._Wallet.node, originAddress).then(origin => {
                 if (optinSymbolLedger) {
-                    alert("Please open Symbol BOLOS app");
-                    alert("Please check your Ledger device!");
+                    this._Alert.ledgerNotOpenApp(true)
                     this._$timeout(() => {
                         this._Alert.ledgerFollowInstruction();
                     });
@@ -334,7 +332,7 @@ class CatapultOptin {
                     if (this._Wallet.algo == "trezor") {
                         this._sendTrezorDTOs(common, dtos).then(resolve).catch(reject);
                     } else if (this._Wallet.algo == "ledger") {
-                        alert("Please open NEM BOLOS app");
+                        this._Alert.ledgerNotOpenApp(false)
                         this._sendLedgerDTOs(common, dtos).then(resolve).catch(reject);
                     } else {
                         const sendPromises = dtos.map(dto => broadcastDTO(common.privateKey, dto, config));
@@ -376,16 +374,15 @@ class CatapultOptin {
         return new Promise((resolve, reject) => {
             nem.com.requests.account.data(this._Wallet.node, originAddress).then(origin => {
                 if (optinSymbolLedger) {
-                    alert("Please open Symbol BOLOS app");
+                    this._Alert.ledgerNotOpenApp(true)
                     this._$timeout(() => {
-                        alert("Please check your Ledger device!");
                         this._Alert.ledgerFollowInstruction();
                     });
                 }
                 buildCosignDTOLedger(origin, cosigner, cosignerPath, destination, config).then(cosignDTO => {
                     this.createTransactionFromDTO(cosignDTO, common).then( transaction => {
                         if (this._Wallet.algo == "ledger") {
-                            alert("Please open NEM BOLOS app");
+                            this._Alert.ledgerNotOpenApp(false)
                         }
                         this._Wallet.transact(common, transaction)
                             .then(resolve)

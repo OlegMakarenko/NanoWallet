@@ -109,7 +109,6 @@ class Ledger {
         return new Promise((resolve, reject) => {
             this.getAppVersion().then(checkVersion => {
                 if (checkVersion === 1) {
-                    alert("Please check your Ledger device!");
                     this._$timeout(() => {
                         this._Alert.ledgerFollowInstruction();
                     });
@@ -143,7 +142,6 @@ class Ledger {
             this.getAppVersion(true).then(checkVersion => {
                 if (checkVersion === 1) {
                     if (display) {
-                        alert("Please check your Ledger device!");
                         this._$timeout(() => {
                             this._Alert.ledgerFollowInstruction();
                         });
@@ -219,7 +217,6 @@ class Ledger {
     }
 
     showAccount(account) {
-        alert("Please check your Ledger device!");
         this._Alert.ledgerFollowInstruction();
         return new Promise((resolve, reject) => {
             this.getAccount(account.hdKeypath, account.network, (result) => {
@@ -305,7 +302,6 @@ class Ledger {
         return new Promise((resolve, reject) => {
             this.getAppVersion().then(checkVersion => {
                 if (checkVersion == 1) {
-                    alert("Please check your Ledger device!");
                     this._$timeout(() => {
                         this._Alert.ledgerFollowInstruction();
                     });
@@ -345,7 +341,6 @@ class Ledger {
         return new Promise(async (resolve, reject) => {
             this.getAppVersion().then(async checkVersion => {
                 if (checkVersion === 1) {
-                    alert("Please check your Ledger device!");
                     this._$timeout(() => {
                         this._Alert.ledgerFollowInstruction();
                     });

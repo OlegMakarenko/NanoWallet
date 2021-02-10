@@ -114,7 +114,6 @@ class LedgerCtrl {
         this.okPressed = true;
         this._Ledger.getAppVersion().then(checkVersion => {
             if (checkVersion === 1) {
-                alert("Please check your Ledger device!");
                 this._$timeout(() => {
                     this._Alert.ledgerFollowInstruction();
                 });

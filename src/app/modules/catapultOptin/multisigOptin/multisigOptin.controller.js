@@ -191,7 +191,7 @@ class MultisigOptInCtrl {
      */
     async onLedgerUnlockClick() {
         this.setAccountPath();
-        alert("Please open Symbol BOLOS app");
+        this._Alert.ledgerNotOpenApp(true)
         const nisPubKey = this._DataStore.account.metaData.account.publicKey;
         const defaultPublicKey = await this._Ledger.getSymbolAccount(this.defaultAccountPath, this.catapultNetwork, true);
         const defaultAccount = PublicAccount.createFromPublicKey(defaultPublicKey, this.catapultNetwork);
