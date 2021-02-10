@@ -5,7 +5,7 @@
   "author": "https://github.com/QuantumMechanics <qmnwdev@gmail.com>",
   "license": "MIT",
   "dependencies": {
-    "@ledgerhq/hw-transport-node-hid": "^5.31.1"
+    "@ledgerhq/hw-transport-node-hid": "^5.41.1"
   },
   "devDependencies": {
     "@babel/runtime": "^7.4.2",
@@ -111,7 +111,7 @@
     "category": "public.app-category.finance",
     "target": "tar.gz",
     "icon": "./images/NanoWallet.icns",
-    "hardenedRuntime": true,
+    "hardenedRuntime": false,
     "gatekeeperAssess": false,
     "asarUnpack": [
       "**/*.node"
