@@ -219,11 +219,11 @@ class Ledger {
         }
     }
 
-    async signSymbolAggregateTransaction(path, transaction, networkGenerationHash, signerPublicKey) {
+    async signSymbolAggregateTransaction(path, transaction, networkGenerationHash, signerPublicKey, transactionHash) {
         return new Promise((resolve, reject) => {
             this.getAppVersion(true).then(checkVersion => {
                 if (checkVersion === 1) {
-                    this._signSymbolAggregateTransaction(path, transaction, networkGenerationHash, signerPublicKey).then((result) => {
+                    this._signSymbolAggregateTransaction(path, transaction, networkGenerationHash, signerPublicKey, transactionHash).then((result) => {
                         resolve(result);
                     }).catch((error) => {
                         reject({ ledgerError: [error, true, false] });
@@ -238,12 +238,12 @@ class Ledger {
         });
     }
 
-    async _signSymbolAggregateTransaction(path, cosignatureTransaction, networkGenerationHash, signerPublicKey) {
+    async _signSymbolAggregateTransaction(path, cosignatureTransaction, networkGenerationHash, signerPublicKey, transactionHash) {
         try {
             const transport = await TransportNodeHid.open("");
             const symbolH = new SymbolH(transport);
             try {
-                const result = await symbolH.signCosignatureTransaction(path, cosignatureTransaction, networkGenerationHash, signerPublicKey);
+                const result = await symbolH.signCosignatureTransaction(path, cosignatureTransaction, networkGenerationHash, signerPublicKey, transactionHash);
                 return Promise.resolve(result);
             } catch (err) {
                 throw err

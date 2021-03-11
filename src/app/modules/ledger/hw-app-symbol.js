@@ -146,16 +146,16 @@ export default class SymbolLedger {
      * @param isOptinSymbolWallet if Opt-in Symbol wallet uses curve Secp256K1 else uses curve Ed25519
      * @return a Signed Cosignature Transaction which is signed by account at path on Ledger
      */
-    async signCosignatureTransaction(path, cosignatureTransaction, signerPublicKey, isOptinSymbolWallet) {
+    async signCosignatureTransaction(path, cosignatureTransaction, signerPublicKey, isOptinSymbolWallet, transactionHash) {
         const rawPayload = cosignatureTransaction.serialize();
-        const signingBytes = cosignatureTransaction.transactionInfo.hash + rawPayload.slice(216);
+        const signingBytes = transactionHash + rawPayload.slice(216);
         const rawTx = Buffer.from(signingBytes, 'hex');
         const response = await this.ledgerMessageHandler(path, rawTx, false, isOptinSymbolWallet);
         // Response from Ledger
         const h = response.toString('hex');
         const signature = h.slice(0, 128);
         const cosignatureSignedTransaction = new CosignatureSignedTransaction(
-            cosignatureTransaction.transactionInfo.hash,
+            transactionHash,
             signature,
             signerPublicKey,
         );
